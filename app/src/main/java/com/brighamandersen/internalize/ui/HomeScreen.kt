@@ -18,11 +18,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.brighamandersen.internalize.models.Passage
 
 @Composable
-fun HomeScreen(navController: NavController) {
-    val passages = listOf("Apple", "Banana", "Cherry", "Date", "Elderberry")
-
+fun HomeScreen(navController: NavController, passages: List<Passage>) {
 //    Column(modifier = Modifier
 //        .fillMaxSize()
 //        .padding(16.dp)) {
@@ -43,9 +42,8 @@ fun HomeScreen(navController: NavController) {
         ) {
             items(passages) { passage -> // Loop directly through the items without an index
                 ListItem(
-                    text = passage,
-                    id = passage.lowercase(),  // You can use the `passage` directly here
-                    navController = navController
+                    navController = navController,
+                    passage = passage
                 )
             }
         }
@@ -53,17 +51,17 @@ fun HomeScreen(navController: NavController) {
 }
 
 @Composable
-fun ListItem(text: String, id: String, navController: NavController) {
+fun ListItem(navController: NavController, passage: Passage) {
     Card(
         modifier = Modifier
             .padding(8.dp)
             .fillMaxWidth()
             .clickable {
-               navController.navigate("details/$id")
+               navController.navigate("details/${passage.id}")
             },
     ) {
         Text(
-            text = text,
+            text = passage.title,
             modifier = Modifier.padding(16.dp),
             style = MaterialTheme.typography.bodyLarge
         )
