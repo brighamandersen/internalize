@@ -1,4 +1,4 @@
-package com.brighamandersen.internalize
+package com.brighamandersen.internalize.ui
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -8,14 +8,14 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 
 @Composable
-fun HomeScreen(navController: NavController) {
+fun DetailsScreen(navController: NavController, itemId: String?) {
     Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
-        Text("Home Screen")
+        Text(text = "Details of item: $itemId")
         Spacer(modifier = Modifier.height(16.dp))
         Button(onClick = {
-            navController.navigate("details/123")
+            navController.navigate("home")
         }) {
-            Text("Go to Details")
+            Text("Return Home")
         }
     }
 }
