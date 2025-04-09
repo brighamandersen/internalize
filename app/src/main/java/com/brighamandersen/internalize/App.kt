@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.*
 
 @Composable
-fun MyApp() {
+fun App() {
     val navController = rememberNavController()
 
     NavHost(navController, startDestination = "home") {
