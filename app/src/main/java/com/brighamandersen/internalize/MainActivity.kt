@@ -18,19 +18,6 @@ class MainActivity : ComponentActivity() {
         setContent {
             InternalizeTheme {
                 App()
-//                Surface(
-//                    modifier = Modifier.fillMaxSize(),
-//                    color = MaterialTheme.colorScheme.background
-//                ) {
-//                    Column(
-//                        modifier = Modifier
-//                            .fillMaxSize()
-//                            .padding(24.dp),
-//                        verticalArrangement = Arrangement.Center
-//                    ) {
-//                        Text("Hello from MainActivity 👋")
-//                    }
-//                }
             }
         }
     }
