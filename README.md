@@ -7,3 +7,12 @@ A Native Android app to help you memorize passages using fill in the blanks!
 ## Launcher/Store App Icons
 
 You can find the master icon used to generate all the iOS/Android variations in `/non_code_icons/`. There you can also find the app icons used for the iOS App Store and the Google Play Store. All these icons in this folder are not actually used in the code, I just keep them in the repo so they're easy to find. As for the icons that are generated from the icon and used directly in the app in `android/app/src/main/res/mipmap*`.
+
+## Decisions
+
+- Material 2 instead of Material 3 for UI
+  - Material 3 is the future but I quickly ran into cases where experimental flags would have to be used so opted for the tried and true Material 2 for now.
+- Jetpack Compose instead of XML
+  - In all my research Jetpack Compose seems to be the future of Android UI development. In my experience it's more React-like and easier to use as well.
+- One single activity
+  - Seems like this is the recommendation when using Jetpack Compose since activities are expensive to open and close. It's worked well so far.
