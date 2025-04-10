@@ -11,13 +11,13 @@ import com.brighamandersen.internalize.ui.App
 //import androidx.compose.ui.unit.dp
 //import androidx.navigation.NavController
 //import androidx.navigation.compose.*
-import com.brighamandersen.internalize.ui.theme.InternalizeTheme
+import com.brighamandersen.internalize.ui.theme.Theme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            InternalizeTheme {
+            Theme {
                 App()
             }
         }
