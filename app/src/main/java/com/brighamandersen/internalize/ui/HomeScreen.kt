@@ -40,7 +40,10 @@ fun HomeScreen(navController: NavController, passages: List<Passage>) {
                 modifier = Modifier.fillMaxSize(),
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                items(passages) { passage ->
+                items(
+                    items = passages,
+                    key = { passage -> passage.id }
+                ) { passage ->
                     ListItem(
                         navController = navController,
                         passage = passage
