@@ -8,13 +8,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
-import androidx.compose.material.Card
-import androidx.compose.material.ripple.rememberRipple
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.brighamandersen.internalize.models.Passage
@@ -24,8 +23,10 @@ fun HomeScreen(navController: NavController, passages: List<Passage>) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Internalize") },
-                backgroundColor = androidx.compose.material.MaterialTheme.colors.surface,
+                title = { Text(
+                    text = "Internalize",
+                ) },
+                backgroundColor = MaterialTheme.colors.surface,
             )
         }
     ) {
@@ -34,13 +35,12 @@ fun HomeScreen(navController: NavController, passages: List<Passage>) {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
-//                .padding(16.dp)
         ) {
             LazyColumn(
                 modifier = Modifier.fillMaxSize(),
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                items(passages) { passage -> // Loop directly through the items without an index
+                items(passages) { passage ->
                     ListItem(
                         navController = navController,
                         passage = passage
