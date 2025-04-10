@@ -3,8 +3,6 @@ package com.brighamandersen.internalize.ui
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.*
 import com.brighamandersen.internalize.models.Passage
-import com.brighamandersen.internalize.ui.DetailsScreen
-import com.brighamandersen.internalize.ui.HomeScreen
 
 @Composable
 fun App() {
