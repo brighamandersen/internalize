@@ -16,3 +16,9 @@ You can find the master icon used to generate all the iOS/Android variations in 
   - In all my research Jetpack Compose seems to be the future of Android UI development. In my experience it's more React-like and easier to use as well.
 - One single activity
   - Seems like this is the recommendation when using Jetpack Compose since activities are expensive to open and close. It's worked well so far.
+
+## Testing
+
+The app is small enough in scope that I won't bother with unit or integration tests. To simplify the project structure I just removed all the testing dependencies and the example test files.
+
+If things change and testing needs to be added back in, look through the git commit history for a commit like [Remove testing dependencies](https://github.com/brighamandersen/internalize/commit/b1a0b05822d035814a49d7c0a66cc9940678c870) to see which dependencies to add back. Also note that you'll need to recreate test directories in `app/src/test` and `app/src/androidTest`.
