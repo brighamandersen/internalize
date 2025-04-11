@@ -3,6 +3,7 @@ package com.brighamandersen.internalize.ui
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.*
 import com.brighamandersen.internalize.models.Passage
+import com.brighamandersen.internalize.utils.NavigationRoutes
 
 @Composable
 fun App() {
@@ -13,12 +14,18 @@ fun App() {
         Passage("3", "Shots Missed", "You miss 100% of the shots you don't take."),
     )
 
-    NavHost(navController, startDestination = "home") {
-        composable("home") { HomeScreen(navController, passages) }
-        composable("details/{passageId}") { backStackEntry ->
+    NavHost(navController, startDestination = NavigationRoutes.HOME) {
+        composable(NavigationRoutes.HOME) { HomeScreen(navController, passages) }
+        composable(NavigationRoutes.CREATE_PASSAGE) { CreatePassageScreen(navController) }
+        composable("${NavigationRoutes.DETAILS}/{passageId}") { backStackEntry ->
             val passageId = backStackEntry.arguments?.getString("passageId")
             val passage = passages.find { it.id == passageId }
             DetailsScreen(navController, passage)
+        }
+        composable("${NavigationRoutes.EDIT_PASSAGE}/{passageId}") { backStackEntry ->
+            val passageId = backStackEntry.arguments?.getString("passageId")
+            val passage = passages.find { it.id == passageId }
+            EditPassageScreen(navController, passage)
         }
     }
 }

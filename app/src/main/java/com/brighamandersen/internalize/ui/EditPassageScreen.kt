@@ -14,7 +14,7 @@ import androidx.navigation.NavController
 import com.brighamandersen.internalize.models.Passage
 
 @Composable
-fun DetailsScreen(navController: NavController, passage: Passage?) {
+fun EditPassageScreen(navController: NavController, passage: Passage?) {
     if (passage == null) {
         PassageNotFound()
         return
@@ -23,7 +23,7 @@ fun DetailsScreen(navController: NavController, passage: Passage?) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(passage.title) },
+                title = { Text("Edit Passage") },
                 navigationIcon = {
                     BackButton(navController = navController)
                 },
@@ -38,7 +38,7 @@ fun DetailsScreen(navController: NavController, passage: Passage?) {
                 .padding(innerPadding)
                 .padding(16.dp)
         ) {
-            Text(text = passage.body)
+            Text(text = "FIXME EDIT")
         }
     }
 }

@@ -8,15 +8,20 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.FloatingActionButton
+import androidx.compose.material.Icon
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
+import androidx.compose.material.icons.Icons
 import androidx.compose.ui.Modifier
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.brighamandersen.internalize.models.Passage
+import com.brighamandersen.internalize.utils.NavigationRoutes
 
 @Composable
 fun HomeScreen(navController: NavController, passages: List<Passage>) {
@@ -28,7 +33,17 @@ fun HomeScreen(navController: NavController, passages: List<Passage>) {
                 ) },
                 backgroundColor = MaterialTheme.colors.surface,
             )
-        }
+        },
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = {
+                    navController.navigate(NavigationRoutes.CREATE_PASSAGE)
+                },
+                backgroundColor = MaterialTheme.colors.primary,
+            ) {
+                Icon(imageVector = Icons.Filled.Add, contentDescription = "Create new passage")
+            }
+        },
     ) {
             innerPadding ->
         Column(
@@ -61,7 +76,7 @@ fun ListItem(navController: NavController, passage: Passage) {
         modifier = Modifier
             .clickable(
                 onClick = {
-                    navController.navigate("details/${passage.id}")
+                    navController.navigate("${NavigationRoutes.DETAILS}/${passage.id}")
                 }
             )
             .fillMaxWidth()

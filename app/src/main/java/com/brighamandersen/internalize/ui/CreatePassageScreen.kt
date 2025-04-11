@@ -11,19 +11,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.brighamandersen.internalize.models.Passage
 
 @Composable
-fun DetailsScreen(navController: NavController, passage: Passage?) {
-    if (passage == null) {
-        PassageNotFound()
-        return
-    }
-
+fun CreatePassageScreen(navController: NavController) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(passage.title) },
+                title = { Text("New Passage") },
                 navigationIcon = {
                     BackButton(navController = navController)
                 },
@@ -38,7 +32,7 @@ fun DetailsScreen(navController: NavController, passage: Passage?) {
                 .padding(innerPadding)
                 .padding(16.dp)
         ) {
-            Text(text = passage.body)
+            Text(text = "FIXME CREATE")
         }
     }
 }
