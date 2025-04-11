@@ -1,4 +1,4 @@
-package com.brighamandersen.internalize.models
+package com.brighamandersen.internalize.viewmodels
 
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
