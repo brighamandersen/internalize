@@ -21,10 +21,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.brighamandersen.internalize.models.Passage
+import com.brighamandersen.internalize.models.PassageViewModel
 import com.brighamandersen.internalize.utils.NavigationRoutes
 
 @Composable
-fun HomeScreen(navController: NavController, passages: List<Passage>) {
+fun HomeScreen(navController: NavController, passageViewModel: PassageViewModel) {
+    val passages = passageViewModel.passages
+
     Scaffold(
         topBar = {
             TopAppBar(

@@ -18,9 +18,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.brighamandersen.internalize.models.PassageViewModel
+import com.brighamandersen.internalize.utils.NavigationRoutes
 
 @Composable
-fun CreatePassageScreen(navController: NavController) {
+fun CreatePassageScreen(navController: NavController, passageViewModel: PassageViewModel) {
     var title by remember { mutableStateOf("") }
     var body by remember { mutableStateOf("") }
 
@@ -64,7 +66,12 @@ fun CreatePassageScreen(navController: NavController) {
                     .padding(bottom = 8.dp)
             )
             Button(
-                onClick = { /*TODO*/ },
+                onClick = {
+                    if (title.isNotBlank() && body.isNotBlank()) {
+                        passageViewModel.addPassage(title, body)
+                        navController.navigate(NavigationRoutes.HOME)
+                    }
+                },
                 modifier = Modifier
                     .fillMaxWidth()
             ) {
