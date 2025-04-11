@@ -69,7 +69,7 @@ fun CreatePassageScreen(navController: NavController, passageViewModel: PassageV
                 onClick = {
                     if (title.isNotBlank() && body.isNotBlank()) {
                         passageViewModel.addPassage(title, body)
-                        navController.navigate(NavigationRoutes.HOME)
+                        navController.popBackStack()
                     }
                 },
                 modifier = Modifier

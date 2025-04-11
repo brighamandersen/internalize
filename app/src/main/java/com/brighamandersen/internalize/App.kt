@@ -20,8 +20,7 @@ fun App() {
         composable(NavigationRoutes.CREATE_PASSAGE) { CreatePassageScreen(navController, passageViewModel) }
         composable("${NavigationRoutes.DETAILS}/{passageId}") { backStackEntry ->
             val passageId = backStackEntry.arguments?.getString("passageId")
-            val passage = passageViewModel.getPassageById(passageId)
-            DetailsScreen(navController, passage)
+            DetailsScreen(navController, passageViewModel, passageId)
         }
         composable("${NavigationRoutes.EDIT_PASSAGE}/{passageId}") { backStackEntry ->
             val passageId = backStackEntry.arguments?.getString("passageId")

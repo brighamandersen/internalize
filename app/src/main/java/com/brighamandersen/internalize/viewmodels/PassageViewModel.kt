@@ -33,4 +33,8 @@ class PassageViewModel : ViewModel() {
         )
         _passages.add(newPassage)
     }
+
+    fun deletePassage(id: String) {
+        _passages.removeIf { it.id == id }
+    }
 }
