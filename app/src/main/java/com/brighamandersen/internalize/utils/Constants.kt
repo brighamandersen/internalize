@@ -1,6 +1,6 @@
 package com.brighamandersen.internalize.utils
 
-object NavigationRoutes {
+object NavRoutes {
     const val HOME = "home"
     const val CREATE_PASSAGE = "createPassage"
     const val DETAILS = "details"

@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.brighamandersen.internalize.models.Passage
 import com.brighamandersen.internalize.viewmodels.PassageViewModel
-import com.brighamandersen.internalize.utils.NavigationRoutes
+import com.brighamandersen.internalize.utils.NavRoutes
 
 @Composable
 fun HomeScreen(navController: NavController, passageViewModel: PassageViewModel) {
@@ -40,7 +40,7 @@ fun HomeScreen(navController: NavController, passageViewModel: PassageViewModel)
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-                    navController.navigate(NavigationRoutes.CREATE_PASSAGE)
+                    navController.navigate(NavRoutes.CREATE_PASSAGE)
                 },
                 backgroundColor = MaterialTheme.colors.primary,
             ) {
@@ -79,7 +79,7 @@ fun ListItem(navController: NavController, passage: Passage) {
         modifier = Modifier
             .clickable(
                 onClick = {
-                    navController.navigate("${NavigationRoutes.DETAILS}/${passage.id}")
+                    navController.navigate("${NavRoutes.DETAILS}/${passage.id}")
                 }
             )
             .fillMaxWidth()

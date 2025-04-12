@@ -8,21 +8,21 @@ import com.brighamandersen.internalize.ui.CreatePassageScreen
 import com.brighamandersen.internalize.ui.DetailsScreen
 import com.brighamandersen.internalize.ui.EditPassageScreen
 import com.brighamandersen.internalize.ui.HomeScreen
-import com.brighamandersen.internalize.utils.NavigationRoutes
+import com.brighamandersen.internalize.utils.NavRoutes
 
 @Composable
 fun App() {
     val navController = rememberNavController()
     val passageViewModel: PassageViewModel = viewModel()
 
-    NavHost(navController, startDestination = NavigationRoutes.HOME) {
-        composable(NavigationRoutes.HOME) { HomeScreen(navController, passageViewModel) }
-        composable(NavigationRoutes.CREATE_PASSAGE) { CreatePassageScreen(navController, passageViewModel) }
-        composable("${NavigationRoutes.DETAILS}/{passageId}") { backStackEntry ->
+    NavHost(navController, startDestination = NavRoutes.HOME) {
+        composable(NavRoutes.HOME) { HomeScreen(navController, passageViewModel) }
+        composable(NavRoutes.CREATE_PASSAGE) { CreatePassageScreen(navController, passageViewModel) }
+        composable("${NavRoutes.DETAILS}/{passageId}") { backStackEntry ->
             val passageId = backStackEntry.arguments?.getString("passageId")
             DetailsScreen(navController, passageViewModel, passageId)
         }
-        composable("${NavigationRoutes.EDIT_PASSAGE}/{passageId}") { backStackEntry ->
+        composable("${NavRoutes.EDIT_PASSAGE}/{passageId}") { backStackEntry ->
             val passageId = backStackEntry.arguments?.getString("passageId")
             EditPassageScreen(navController, passageViewModel, passageId)
         }

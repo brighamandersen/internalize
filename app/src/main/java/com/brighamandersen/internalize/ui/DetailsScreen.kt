@@ -21,7 +21,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.brighamandersen.internalize.utils.NavigationRoutes
+import com.brighamandersen.internalize.utils.NavRoutes
 import com.brighamandersen.internalize.viewmodels.PassageViewModel
 
 @Composable
@@ -56,7 +56,7 @@ fun DetailsScreen(navController: NavController, passageViewModel: PassageViewMod
                     ) {
                         DropdownMenuItem(onClick = {
                             isOverflowMenuExpanded = false
-                            navController.navigate("${NavigationRoutes.EDIT_PASSAGE}/${passage.id}")
+                            navController.navigate("${NavRoutes.EDIT_PASSAGE}/${passage.id}")
                         }) {
                             Text("Edit")
                         }
