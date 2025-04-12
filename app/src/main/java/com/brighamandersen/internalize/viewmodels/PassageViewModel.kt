@@ -25,16 +25,23 @@ class PassageViewModel : ViewModel() {
         return _passages.find { it.id == id }
     }
 
-    fun addPassage(title: String, body: String) {
+    fun addPassage(newTitle: String, newBody: String) {
         val newPassage = Passage(
             id = UUID.randomUUID().toString(), // Generate a unique ID (you might have your own ID logic)
-            title = title,
-            body = body
+            title = newTitle,
+            body = newBody
         )
         _passages.add(newPassage)
     }
 
     fun deletePassage(id: String) {
         _passages.removeIf { it.id == id }
+    }
+
+    fun editPassage(id: String, newTitle: String, newBody: String) {
+        val index = _passages.indexOfFirst { it.id == id }
+        if (index != -1) {
+            _passages[index] = _passages[index].copy(title = newTitle, body = newBody)
+        }
     }
 }

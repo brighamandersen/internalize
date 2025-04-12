@@ -19,7 +19,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.brighamandersen.internalize.viewmodels.PassageViewModel
-import com.brighamandersen.internalize.utils.NavigationRoutes
 
 @Composable
 fun CreatePassageScreen(navController: NavController, passageViewModel: PassageViewModel) {
