@@ -1,4 +1,4 @@
-package com.brighamandersen.internalize.ui
+package com.brighamandersen.internalize.ui.screens
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,6 +21,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.brighamandersen.internalize.ui.components.BackButton
+import com.brighamandersen.internalize.ui.components.PassageNotFound
 import com.brighamandersen.internalize.utils.NavRoutes
 import com.brighamandersen.internalize.viewmodels.PassageViewModel
 

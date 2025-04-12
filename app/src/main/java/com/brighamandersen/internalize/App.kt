@@ -4,10 +4,10 @@ import androidx.compose.runtime.Composable
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.*
 import com.brighamandersen.internalize.viewmodels.PassageViewModel
-import com.brighamandersen.internalize.ui.CreatePassageScreen
-import com.brighamandersen.internalize.ui.DetailsScreen
-import com.brighamandersen.internalize.ui.EditPassageScreen
-import com.brighamandersen.internalize.ui.HomeScreen
+import com.brighamandersen.internalize.ui.screens.CreatePassageScreen
+import com.brighamandersen.internalize.ui.screens.DetailsScreen
+import com.brighamandersen.internalize.ui.screens.EditPassageScreen
+import com.brighamandersen.internalize.ui.screens.HomeScreen
 import com.brighamandersen.internalize.utils.NavRoutes
 
 @Composable

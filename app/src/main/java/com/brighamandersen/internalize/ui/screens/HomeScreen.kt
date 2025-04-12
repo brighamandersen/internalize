@@ -1,4 +1,4 @@
-package com.brighamandersen.internalize.ui
+package com.brighamandersen.internalize.ui.screens
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement

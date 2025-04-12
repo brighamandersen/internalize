@@ -1,4 +1,4 @@
-package com.brighamandersen.internalize.ui
+package com.brighamandersen.internalize.ui.components
 
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable

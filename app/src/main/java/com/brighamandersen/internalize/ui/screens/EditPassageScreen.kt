@@ -1,4 +1,4 @@
-package com.brighamandersen.internalize.ui
+package com.brighamandersen.internalize.ui.screens
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -18,17 +18,29 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.brighamandersen.internalize.ui.components.BackButton
+import com.brighamandersen.internalize.ui.components.PassageNotFound
 import com.brighamandersen.internalize.viewmodels.PassageViewModel
 
 @Composable
-fun CreatePassageScreen(navController: NavController, passageViewModel: PassageViewModel) {
-    var title by remember { mutableStateOf("") }
-    var body by remember { mutableStateOf("") }
+fun EditPassageScreen(
+    navController: NavController,
+    passageViewModel: PassageViewModel,
+    passageId: String?
+) {
+    val passage = passageViewModel.getPassageById(passageId)
+    if (passageId == null || passage == null) {
+        PassageNotFound()
+        return
+    }
+
+    var title by remember { mutableStateOf(passage.title) }
+    var body by remember { mutableStateOf(passage.body) }
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("New Passage") },
+                title = { Text("Edit Passage") },
                 navigationIcon = {
                     BackButton(navController = navController)
                 },
@@ -36,7 +48,7 @@ fun CreatePassageScreen(navController: NavController, passageViewModel: PassageV
             )
         }
     ) {
-        innerPadding ->
+            innerPadding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -48,7 +60,7 @@ fun CreatePassageScreen(navController: NavController, passageViewModel: PassageV
                 value = title,
                 onValueChange = { title = it },
                 label = { Text("Title") },
-                placeholder = { Text("The Preamble of the Constitution") },
+                placeholder = { Text("New title") },
                 singleLine = true,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -58,7 +70,7 @@ fun CreatePassageScreen(navController: NavController, passageViewModel: PassageV
                 value = body,
                 onValueChange = { body = it },
                 label = { Text("Body") },
-                placeholder = { Text("We the People of the United States, in Order to form a more perfect Union, establish Justice, insure domestic Tranquility, provide for the common defence, promote the general Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and establish this Constitution for the United States of America.") },
+                placeholder = { Text("New body") },
                 modifier = Modifier
                     .weight(1f)
                     .fillMaxWidth()
@@ -67,7 +79,7 @@ fun CreatePassageScreen(navController: NavController, passageViewModel: PassageV
             Button(
                 onClick = {
                     if (title.isNotBlank() && body.isNotBlank()) {
-                        passageViewModel.addPassage(title, body)
+                        passageViewModel.editPassage(passageId, title, body)
                         navController.popBackStack()
                     }
                 },
