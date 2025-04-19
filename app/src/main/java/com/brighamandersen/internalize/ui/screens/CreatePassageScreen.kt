@@ -3,12 +3,14 @@ package com.brighamandersen.internalize.ui.screens
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.OutlinedTextField
+import androidx.compose.material.TextButton
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -34,6 +36,16 @@ fun CreatePassageScreen(navController: NavController, passageViewModel: PassageV
                     BackButton(navController = navController)
                 },
                 backgroundColor = MaterialTheme.colors.surface,
+                actions = {
+                    TextButton(onClick = {
+                        if (title.isNotBlank() && body.isNotBlank()) {
+                            passageViewModel.addPassage(title, body)
+                            navController.popBackStack()
+                        }
+                    }) {
+                        Text("SAVE")
+                    }
+                },
             )
         }
     ) {
@@ -41,6 +53,7 @@ fun CreatePassageScreen(navController: NavController, passageViewModel: PassageV
         Column(
             modifier = Modifier
                 .fillMaxSize()
+                .imePadding()
                 .padding(innerPadding)
                 .padding(16.dp)
                 .padding(top = 0.dp)
@@ -65,18 +78,6 @@ fun CreatePassageScreen(navController: NavController, passageViewModel: PassageV
                     .fillMaxWidth()
                     .padding(bottom = 8.dp)
             )
-            Button(
-                onClick = {
-                    if (title.isNotBlank() && body.isNotBlank()) {
-                        passageViewModel.addPassage(title, body)
-                        navController.popBackStack()
-                    }
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
-            ) {
-                Text("Save")
-            }
         }
     }
 }

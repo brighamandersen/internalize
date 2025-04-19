@@ -9,6 +9,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.OutlinedTextField
+import androidx.compose.material.TextButton
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -45,6 +46,16 @@ fun EditPassageScreen(
                     BackButton(navController = navController)
                 },
                 backgroundColor = MaterialTheme.colors.surface,
+                actions = {
+                    TextButton(onClick = {
+                        if (title.isNotBlank() && body.isNotBlank()) {
+                            passageViewModel.editPassage(passageId, title, body)
+                            navController.popBackStack()
+                        }
+                    }) {
+                        Text("SAVE")
+                    }
+                },
             )
         }
     ) {
@@ -76,18 +87,6 @@ fun EditPassageScreen(
                     .fillMaxWidth()
                     .padding(bottom = 8.dp)
             )
-            Button(
-                onClick = {
-                    if (title.isNotBlank() && body.isNotBlank()) {
-                        passageViewModel.editPassage(passageId, title, body)
-                        navController.popBackStack()
-                    }
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
-            ) {
-                Text("Save")
-            }
         }
     }
 }
