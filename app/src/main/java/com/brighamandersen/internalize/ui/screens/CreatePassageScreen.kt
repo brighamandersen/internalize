@@ -23,10 +23,12 @@ import androidx.navigation.NavController
 import com.brighamandersen.internalize.ui.components.BackButton
 import com.brighamandersen.internalize.viewmodels.PassageViewModel
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 
 @Composable
 fun CreatePassageScreen(navController: NavController, passageViewModel: PassageViewModel) {
     val context = LocalContext.current
+    val keyboardController = LocalSoftwareKeyboardController.current
 
     var title by remember { mutableStateOf("") }
     var body by remember { mutableStateOf("") }
@@ -41,6 +43,8 @@ fun CreatePassageScreen(navController: NavController, passageViewModel: PassageV
                 backgroundColor = MaterialTheme.colors.surface,
                 actions = {
                     TextButton(onClick = {
+                        keyboardController?.hide()
+
                         if (title.isNotBlank() && body.isNotBlank()) {
                             passageViewModel.addPassage(title, body)
                             Toast.makeText(context, "Passage created", Toast.LENGTH_SHORT).show()

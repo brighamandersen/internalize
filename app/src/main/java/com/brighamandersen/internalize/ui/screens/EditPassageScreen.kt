@@ -18,6 +18,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.brighamandersen.internalize.ui.components.BackButton
@@ -31,6 +32,7 @@ fun EditPassageScreen(
     passageId: String?
 ) {
     val context = LocalContext.current
+    val keyboardController = LocalSoftwareKeyboardController.current
 
     val passage = passageViewModel.getPassageById(passageId)
     if (passageId == null || passage == null) {
@@ -51,6 +53,8 @@ fun EditPassageScreen(
                 backgroundColor = MaterialTheme.colors.surface,
                 actions = {
                     TextButton(onClick = {
+                        keyboardController?.hide()
+
                         if (title.isNotBlank() && body.isNotBlank()) {
                             passageViewModel.editPassage(passageId, title, body)
                             Toast.makeText(context, "Passage edited", Toast.LENGTH_SHORT).show()
