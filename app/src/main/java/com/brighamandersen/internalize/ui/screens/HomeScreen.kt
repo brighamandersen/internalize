@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.Divider
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
 import androidx.compose.material.icons.filled.Add
@@ -83,4 +84,5 @@ fun ListItem(navController: NavController, passage: Passage) {
             .fillMaxWidth()
             .padding(16.dp)
     )
+    Divider(color = MaterialTheme.colors.onSurface.copy(alpha = 0.06f), thickness = 1.dp)
 }
