@@ -14,6 +14,8 @@ import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.outlined.Delete
+import androidx.compose.material.icons.outlined.Edit
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -64,6 +66,11 @@ fun DetailsScreen(navController: NavController, passageViewModel: PassageViewMod
                             isOverflowMenuExpanded = false
                             navController.navigate("${NavRoutes.EDIT_PASSAGE}/${passage.id}")
                         }) {
+                            Icon(
+                                imageVector = Icons.Outlined.Edit,
+                                contentDescription = "Edit",
+                                modifier = Modifier.padding(end = 8.dp)
+                            )
                             Text("Edit")
                         }
                         DropdownMenuItem(onClick = {
@@ -72,6 +79,11 @@ fun DetailsScreen(navController: NavController, passageViewModel: PassageViewMod
                             Toast.makeText(context, "Passage deleted", Toast.LENGTH_SHORT).show()
                             navController.popBackStack()
                         }) {
+                            Icon(
+                                imageVector = Icons.Outlined.Delete,
+                                contentDescription = "Delete",
+                                modifier = Modifier.padding(end = 8.dp)
+                            )
                             Text("Delete")
                         }
                     }
