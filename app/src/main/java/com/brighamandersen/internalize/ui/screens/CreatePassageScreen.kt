@@ -1,11 +1,11 @@
 package com.brighamandersen.internalize.ui.screens
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
@@ -22,9 +22,12 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.brighamandersen.internalize.ui.components.BackButton
 import com.brighamandersen.internalize.viewmodels.PassageViewModel
+import androidx.compose.ui.platform.LocalContext
 
 @Composable
 fun CreatePassageScreen(navController: NavController, passageViewModel: PassageViewModel) {
+    val context = LocalContext.current
+
     var title by remember { mutableStateOf("") }
     var body by remember { mutableStateOf("") }
 
@@ -40,6 +43,7 @@ fun CreatePassageScreen(navController: NavController, passageViewModel: PassageV
                     TextButton(onClick = {
                         if (title.isNotBlank() && body.isNotBlank()) {
                             passageViewModel.addPassage(title, body)
+                            Toast.makeText(context, "Passage created", Toast.LENGTH_SHORT).show()
                             navController.popBackStack()
                         }
                     }) {
