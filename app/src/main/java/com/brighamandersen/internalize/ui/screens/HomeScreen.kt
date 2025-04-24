@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.Divider
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
@@ -57,14 +58,19 @@ fun HomeScreen(navController: NavController, passageViewModel: PassageViewModel)
             LazyColumn(
                 modifier = Modifier.fillMaxSize(),
             ) {
-                items(
-                    items = passages,
-                    key = { passage -> passage.id }
-                ) { passage ->
+                itemsIndexed(
+                    passages
+                ) { index, passage ->
                     ListItem(
                         navController = navController,
                         passage = passage
                     )
+                    if (index < passages.lastIndex) {
+                        Divider(
+                            color = MaterialTheme.colors.onSurface.copy(alpha = 0.06f),
+                            thickness = 1.dp
+                        )
+                    }
                 }
             }
         }
@@ -84,5 +90,4 @@ fun ListItem(navController: NavController, passage: Passage) {
             .fillMaxWidth()
             .padding(16.dp)
     )
-    Divider(color = MaterialTheme.colors.onSurface.copy(alpha = 0.06f), thickness = 1.dp)
 }
