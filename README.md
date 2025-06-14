@@ -16,6 +16,8 @@ You can find the master icon used to generate all the iOS/Android variations in 
   - In all my research Jetpack Compose seems to be the future of Android UI development. In my experience it's more React-like and easier to use as well.
 - One single activity
   - Seems like this is the recommendation when using Jetpack Compose since activities are expensive to open and close. It's worked well so far.
+- JSON for persisting data and then Kotlin in-memory models.
+  - I knew I would want the Kotlin in-memory models to keep everything super fluid between interactions. Ideally I would have persisted data using Room as that's the industry standard and scalable solution, but this was a project that I was hoping to finish a while back and I don't think users will have enough passages to even lead to performance issues that JSON can have, so it's a fine solution for now.
 
 ## Testing
 
