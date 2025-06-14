@@ -1,7 +1,6 @@
 package com.brighamandersen.internalize
 
 import androidx.compose.runtime.Composable
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.*
 import com.brighamandersen.internalize.viewmodels.PassageViewModel
 import com.brighamandersen.internalize.ui.screens.CreatePassageScreen
@@ -11,9 +10,8 @@ import com.brighamandersen.internalize.ui.screens.HomeScreen
 import com.brighamandersen.internalize.utils.NavRoutes
 
 @Composable
-fun App() {
+fun App(passageViewModel: PassageViewModel) {
     val navController = rememberNavController()
-    val passageViewModel: PassageViewModel = viewModel()
 
     NavHost(navController, startDestination = NavRoutes.HOME) {
         composable(NavRoutes.HOME) { HomeScreen(navController, passageViewModel) }
