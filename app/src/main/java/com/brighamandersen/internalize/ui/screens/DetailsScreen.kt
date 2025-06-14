@@ -5,6 +5,8 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -106,17 +108,20 @@ fun DetailsScreen(navController: NavController, passageViewModel: PassageViewMod
                 .fillMaxSize()
                 .padding(innerPadding)
         ) {
-            Text(
-                text = processedText,
-                fontFamily = FontFamily.Monospace,
-                style = MaterialTheme.typography.body1.copy(
-                    lineHeight = 24.sp,
-                    fontSize = 18.sp
-                ),
+            Column(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp)
-            )
+                    .fillMaxSize()
+                    .padding(bottom = 72.dp) // Add padding for the button group
+            ) {
+                Text(
+                    text = processedText,
+                    fontFamily = FontFamily.Monospace,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp)
+                        .verticalScroll(rememberScrollState())
+                )
+            }
             
             Row(
                 modifier = Modifier
