@@ -1,7 +1,11 @@
 package com.brighamandersen.internalize.ui.screens
 
 import android.widget.Toast
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
@@ -10,12 +14,15 @@ import androidx.compose.material.icons.outlined.Edit
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.brighamandersen.internalize.ui.components.BackButton
 import com.brighamandersen.internalize.ui.components.PassageNotFound
+import com.brighamandersen.internalize.ui.theme.PureBlack
 import com.brighamandersen.internalize.utils.NavRoutes
 import com.brighamandersen.internalize.viewmodels.PassageViewModel
 
@@ -113,16 +120,28 @@ fun DetailsScreen(navController: NavController, passageViewModel: PassageViewMod
                     .fillMaxWidth()
                     .padding(16.dp)
                     .align(Alignment.BottomCenter)
+                    .clip(RoundedCornerShape(8.dp))
+                    .border(
+                        border = BorderStroke(2.dp, MaterialTheme.colors.primary),
+                        shape = RoundedCornerShape(8.dp)
+                    )
             ) {
                 Button(
                     onClick = { visibilityLevel = VisibilityLevel.NONE },
-                    modifier = Modifier.weight(1f),
+                    modifier = Modifier
+                        .weight(1f)
+                        .height(40.dp),
                     colors = ButtonDefaults.buttonColors(
                         backgroundColor = if (visibilityLevel == VisibilityLevel.NONE) 
                             MaterialTheme.colors.primary 
                         else 
-                            MaterialTheme.colors.surface
-                    )
+                            Color.Transparent
+                    ),
+                    elevation = ButtonDefaults.elevation(
+                        defaultElevation = 0.dp,
+                        pressedElevation = 0.dp
+                    ),
+                    shape = RoundedCornerShape(topStart = 8.dp, bottomStart = 8.dp)
                 ) {
                     Text(
                         "None",
@@ -132,15 +151,26 @@ fun DetailsScreen(navController: NavController, passageViewModel: PassageViewMod
                             MaterialTheme.colors.onSurface
                     )
                 }
-                Spacer(modifier = Modifier.width(8.dp))
+                Divider(
+                    modifier = Modifier
+                        .width(2.dp)
+                        .height(40.dp),
+                    color = MaterialTheme.colors.primary
+                )
                 Button(
                     onClick = { visibilityLevel = VisibilityLevel.SOME },
-                    modifier = Modifier.weight(1f),
+                    modifier = Modifier
+                        .weight(1f)
+                        .height(40.dp),
                     colors = ButtonDefaults.buttonColors(
                         backgroundColor = if (visibilityLevel == VisibilityLevel.SOME) 
                             MaterialTheme.colors.primary 
                         else 
-                            MaterialTheme.colors.surface
+                            Color.Transparent
+                    ),
+                    elevation = ButtonDefaults.elevation(
+                        defaultElevation = 0.dp,
+                        pressedElevation = 0.dp
                     )
                 ) {
                     Text(
@@ -151,16 +181,28 @@ fun DetailsScreen(navController: NavController, passageViewModel: PassageViewMod
                             MaterialTheme.colors.onSurface
                     )
                 }
-                Spacer(modifier = Modifier.width(8.dp))
+                Divider(
+                    modifier = Modifier
+                        .width(2.dp)
+                        .height(40.dp),
+                    color = MaterialTheme.colors.primary
+                )
                 Button(
                     onClick = { visibilityLevel = VisibilityLevel.ALL },
-                    modifier = Modifier.weight(1f),
+                    modifier = Modifier
+                        .weight(1f)
+                        .height(40.dp),
                     colors = ButtonDefaults.buttonColors(
                         backgroundColor = if (visibilityLevel == VisibilityLevel.ALL) 
                             MaterialTheme.colors.primary 
                         else 
-                            MaterialTheme.colors.surface
-                    )
+                            Color.Transparent
+                    ),
+                    elevation = ButtonDefaults.elevation(
+                        defaultElevation = 0.dp,
+                        pressedElevation = 0.dp
+                    ),
+                    shape = RoundedCornerShape(topEnd = 8.dp, bottomEnd = 8.dp)
                 ) {
                     Text(
                         "All",
