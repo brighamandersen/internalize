@@ -4,6 +4,8 @@
 
 A Native Android app to help you memorize passages using fill in the blanks!
 
+This app was actually originally written in Flutter as I thought I needed a cross-platform solution, but then after I saw that at least for the MVP the scope would be more for my own use while I ironed a few things out with the user experience, I decided I'd rather build it in Jetpack Compose and have even better performance, as well as building my skills in native Android which aligned more closely with my goals. See https://github.com/brighamandersen/internalize-flutter for more details on my learning journey on the Flutter side of things if you're curious.
+
 ## Launcher/Store App Icons
 
 You can find the master icon used to generate all the iOS/Android variations in `/non_code_icons/`. There you can also find the app icons used for the iOS App Store and the Google Play Store. All these icons in this folder are not actually used in the code, I just keep them in the repo so they're easy to find. As for the icons that are generated from the icon and used directly in the app in `android/app/src/main/res/mipmap*`.
