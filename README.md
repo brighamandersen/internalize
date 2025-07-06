@@ -1,6 +1,6 @@
 # Internalize
 
-![App banner](./non_code_icons/otherinternalize-canva-banner.jpg)
+![App banner](./non_code_icons/internalize-canva-banner.jpg)
 
 A Native Android app to help you memorize passages using fill in the blanks!
 
