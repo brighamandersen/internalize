@@ -2,7 +2,7 @@
 
 ![App banner](./non_code_icons/internalize-canva-banner.jpg)
 
-A Native Android app to help you memorize passages using fill in the blanks!
+Native Android app to help you memorize passages using fill in the blanks!
 
 This app was actually originally written in Flutter as I thought I needed a cross-platform solution, but then after I saw that at least for the MVP the scope would be more for my own use while I ironed a few things out with the user experience, I decided I'd rather build it in Jetpack Compose and have even better performance, as well as building my skills in native Android which aligned more closely with my goals. See https://github.com/brighamandersen/internalize-flutter for more details on my learning journey on the Flutter side of things if you're curious.
 
