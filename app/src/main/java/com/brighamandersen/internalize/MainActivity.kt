@@ -14,7 +14,6 @@ class MainActivity : ComponentActivity() {
         setContent {
             Theme {
                 val passageViewModel: PassageViewModel = viewModel()
-                passageViewModel.initialize(this)
                 App(passageViewModel)
             }
         }
