@@ -1,19 +1,23 @@
 package com.brighamandersen.internalize.viewmodels
 
-import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
-import com.brighamandersen.internalize.models.Passage
+import androidx.lifecycle.viewModelScope
+import com.brighamandersen.internalize.data.PassageDao
+import com.brighamandersen.internalize.entities.Passage
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
 import java.util.UUID
 
-class PassageViewModel : ViewModel() {
-    private val _passages = mutableStateListOf<Passage>()
-    val passages: List<Passage> get() = _passages
+class PassageViewModel(private val dao: PassageDao) : ViewModel() {
+
+    val passages: StateFlow<List<Passage>> =
+        dao.getAllPassages().stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
 
     fun getPassageById(id: String?): Passage? {
-        if (id == null) {
-            return null
-        }
-        return _passages.find { it.id == id }
+        if (id == null) return null
+        return passages.value.find { it.id == id }
     }
 
     fun addPassage(newTitle: String, newBody: String) {
@@ -22,17 +26,23 @@ class PassageViewModel : ViewModel() {
             title = newTitle,
             body = newBody
         )
-        _passages.add(newPassage)
-    }
-
-    fun deletePassage(id: String) {
-        _passages.removeIf { it.id == id }
-    }
-
-    fun editPassage(id: String, newTitle: String, newBody: String) {
-        val index = _passages.indexOfFirst { it.id == id }
-        if (index != -1) {
-            _passages[index] = _passages[index].copy(title = newTitle, body = newBody)
+        viewModelScope.launch {
+            dao.insertPassage(newPassage)
         }
+    }
+
+    fun updatePassage(id: String, newTitle: String, newBody: String) {
+        val passage = passages.value.find { it.id == id } ?: return
+        val updated = passage.copy(title = newTitle, body = newBody)
+        viewModelScope.launch {
+            dao.updatePassage(updated)
+        }
+    }
+
+    fun deletePassageById(id: String) {
+      val passage = passages.value.find { it.id == id } ?: return
+      viewModelScope.launch {
+          dao.deletePassageById(passage.id)
+      }
     }
 }

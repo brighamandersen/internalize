@@ -87,7 +87,7 @@ fun DetailsScreen(navController: NavController, passageViewModel: PassageViewMod
                         }
                         DropdownMenuItem(onClick = {
                             isOverflowMenuExpanded = false
-                            passageViewModel.deletePassage(passage.id)
+                            passageViewModel.deletePassageById(passage.id)
                             Toast.makeText(context, "Passage deleted", Toast.LENGTH_SHORT).show()
                             navController.popBackStack()
                         }) {

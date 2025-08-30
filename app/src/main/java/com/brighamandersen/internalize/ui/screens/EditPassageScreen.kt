@@ -56,7 +56,7 @@ fun EditPassageScreen(
                         keyboardController?.hide()
 
                         if (title.isNotBlank() && body.isNotBlank()) {
-                            passageViewModel.editPassage(passageId, title, body)
+                            passageViewModel.updatePassage(passageId, title, body)
                             Toast.makeText(context, "Passage edited", Toast.LENGTH_SHORT).show()
                             navController.popBackStack()
                         }

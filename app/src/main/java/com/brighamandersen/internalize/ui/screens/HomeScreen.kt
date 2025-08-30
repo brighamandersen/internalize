@@ -19,15 +19,17 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.ui.Modifier
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.brighamandersen.internalize.models.Passage
+import com.brighamandersen.internalize.entities.Passage
 import com.brighamandersen.internalize.viewmodels.PassageViewModel
 import com.brighamandersen.internalize.utils.NavRoutes
 
 @Composable
 fun HomeScreen(navController: NavController, passageViewModel: PassageViewModel) {
-    val passages = passageViewModel.passages
+    val passages by passageViewModel.passages.collectAsState()
 
     Scaffold(
         topBar = {
